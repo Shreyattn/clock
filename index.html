@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<style>
+
+    body{
+        background-color: blue;
+    }
+    #greet{
+        text-align: center;
+        padding-top: 2%;
+        color: white;
+        font-size: 215%;
+        font-weight:bold;
+    }
+
+    #watch{
+        text-align: center;
+        color: white;
+        font-size: 529%;
+    }
+
+    hr{
+        width:8%;
+        font-weight: bolder;
+        font-weight: 700;
+    }
+
+    .container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-top: 7%;
+        
+    }
+
+    h1{
+        color: white;
+    }
+</style>
+
+<body>
+    <div class="container">
+    <h1 id="greet">GOOD MORNING</h1>
+    <hr>
+    <h1 id="watch">10:00:00</h1>   
+    <h1 id="date">29 Sept 2021</h1> 
+</div>    
+</body>
+
+<script>
+ 
+ setInterval(displayclock, 1000);
+ 
+ function displayclock(){
+ var time= new Date();
+ var hrs= time.getHours();
+ var min= time.getMinutes();
+ var sec = time.getSeconds();
+ var en= 'AM';
+ var date= time.getDate();
+ var year=time.getFullYear();
+ const months = ["Jan","Feb","Mar","Apr","May","June","July","Aug","Sep","Oct","Nov","Dec"];
+
+
+ document.getElementById('date').innerHTML=(date + ' ' + months[time.getMonth()] + ' ' + year);
+ 
+ let greeting;
+if (hrs < 12) {
+  greeting = "GOOD MORNING";
+} else if (hrs < 20) {
+  greeting = "GOOD EVENING ";
+} else {
+  greeting = "GOOD NIGHT";
+}
+document.getElementById("greet").innerHTML = greeting;
+ 
+
+if(hrs>12){
+    en='PM';
+}
+ 
+ if(hrs>12){
+     hrs=hrs-12;
+ }
+
+ if(hrs==0){
+     hrs=12;
+ }
+
+ if(hrs<10){
+     hrs= '0' + hrs;
+ }
+
+ if(min<10){
+     min= '0' + min;
+ }
+
+ if(sec<10){
+     sec= '0' + sec;
+ }
+  document.getElementById('watch').innerHTML = hrs + ':' + min + ':' + sec +  ' ' + en;
+
+ }
+
+ 
+</script>
+</html>
